@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
+   [SerializeField] private Point m_startPoint;
    [Header("Максимальное")]
    [SerializeField] private int m_maxHealth = 100;
    [SerializeField] private int m_maxEnergy = 100;
@@ -14,9 +15,30 @@ public class Ship : MonoBehaviour
    [SerializeField] private int m_energy = 100;
    [SerializeField] private int m_oxygen = 100;
 
-   public event Action OnFuelOut;
+   private Point m_point;
+
+   public Point CurrentPoint => m_point;
+
+   public event Action OnEnergyOut;
    public event Action OnHealthOut;
    public event Action OnOxygenOut;
+
+   private void Awake()
+   {
+      m_point = m_startPoint;
+      m_point.UpdateCurrentStatus(true);
+   }
+
+   public void FlyToPoint(Point point)
+   {
+      m_point.UpdateCurrentStatus(false);
+      m_point = point;
+      m_point.UpdateCurrentStatus(true);
+
+      SpendEnergy(m_point.EnergySpend);
+      SpendHealth(m_point.HealthSpend);
+      SpendOxygen(m_point.OxygenSpend);
+   }
 
    public void Repair(int value)
    {
@@ -45,7 +67,7 @@ public class Ship : MonoBehaviour
       if (m_energy <= 0)
       {
          m_energy = 0;
-         OnFuelOut?.Invoke();
+         OnEnergyOut?.Invoke();
       }
    }
 
