@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class Point : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] private PointInfoPanel m_infoPanel;
     [SerializeField] private GameObject m_indicator;
     [SerializeField] private GameObject m_selected;
     [Space]
@@ -20,9 +17,11 @@ public class Point : MonoBehaviour, IPointerClickHandler
     public int EnergySpend => m_EnergySpend;
     public string PointName => m_pointName;
 
+    public Action OnSelect;
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        m_infoPanel.Show(this);
+        OnSelect?.Invoke();
         UpdateSelectedStatus(true);
     }
 

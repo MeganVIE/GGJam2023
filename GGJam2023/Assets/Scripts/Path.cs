@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Path : MonoBehaviour
@@ -10,11 +7,13 @@ public class Path : MonoBehaviour
    [SerializeField] private Point m_pointFrom;
    [SerializeField] private Point m_pointTo;
 
-   private List<Point> m_paths;
-
    private void Awake()
    {
-      m_paths = new List<Point> {m_pointFrom, m_pointTo};
+      UpdateLine();
+   }
+
+   private void OnValidate()
+   {
       UpdateLine();
    }
 
@@ -24,8 +23,6 @@ public class Path : MonoBehaviour
       m_line.SetPosition(1, (Vector2)m_pointTo.transform.position);
    }
 
-   public bool CanFly(Point pointFrom, Point pointTo)
-   {
-      return m_paths.Contains(pointFrom) && m_paths.Contains(pointTo);
-   }
+   public bool CanFly(Point pointFrom, Point pointTo) => (m_pointFrom == pointFrom && m_pointTo == pointTo) ||
+                                                         (m_pointFrom == pointTo && m_pointTo == pointFrom);
 }

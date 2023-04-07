@@ -18,10 +18,7 @@ public class PointInfoPanel : MonoBehaviour
 
     private Point m_point;
 
-    private void Awake()
-    {
-        Hide();
-    }
+    public event Action<Point> OnFlyClicked;
 
     private void Hide()
     {
@@ -36,14 +33,13 @@ public class PointInfoPanel : MonoBehaviour
     private void OnDisable()
     {
         m_btn.onClick.RemoveListener(OnClickHandler);
-        m_point = null;
     }
 
     private void OnClickHandler()
     {
-        m_ship.FlyToPoint(m_point);
         m_point.UpdateSelectedStatus(false);
-
+        OnFlyClicked?.Invoke(m_point);
+        m_point = null;
         Hide();
     }
 

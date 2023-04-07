@@ -6,10 +6,11 @@ using UnityEngine;
 public class Ship : MonoBehaviour
 {
    [SerializeField] private Point m_startPoint;
+   [SerializeField] private ShipStatesPanel m_statesPanel;
    [Header("Максимальное")]
    [SerializeField] private int m_maxHealth = 100;
    [SerializeField] private int m_maxEnergy = 100;
-   [SerializeField] private int m_MaxOxygen = 100;
+   [SerializeField] private int m_maxOxygen = 100;
    [Header("Текущее")]
    [SerializeField] private int m_health = 100;
    [SerializeField] private int m_energy = 100;
@@ -27,6 +28,9 @@ public class Ship : MonoBehaviour
    {
       m_point = m_startPoint;
       m_point.UpdateCurrentStatus(true);
+
+      m_statesPanel.SetMaxValues(m_maxOxygen, m_maxEnergy, m_maxHealth);
+      m_statesPanel.UpdateValues(m_oxygen, m_energy, m_health);
    }
 
    public void FlyToPoint(Point point)
@@ -57,13 +61,15 @@ public class Ship : MonoBehaviour
    public void FillOxygen(int value)
    {
       m_oxygen += value;
-      if (m_oxygen > m_MaxOxygen)
-         m_oxygen = m_MaxOxygen;
+      if (m_oxygen > m_maxOxygen)
+         m_oxygen = m_maxOxygen;
    }
 
    public void SpendEnergy(int value)
    {
       m_energy -= value;
+      m_statesPanel.UpdateEnergyState(m_energy);
+
       if (m_energy <= 0)
       {
          m_energy = 0;
@@ -74,6 +80,8 @@ public class Ship : MonoBehaviour
    public void SpendOxygen(int value)
    {
       m_oxygen -= value;
+      m_statesPanel.UpdateOxygenState(m_oxygen);
+
       if (m_oxygen <= 0)
       {
          m_oxygen = 0;
@@ -84,6 +92,8 @@ public class Ship : MonoBehaviour
    public void SpendHealth(int value)
    {
       m_health -= value;
+      m_statesPanel.UpdateHealthState(m_health);
+
       if (m_health <= 0)
       {
          m_health = 0;
