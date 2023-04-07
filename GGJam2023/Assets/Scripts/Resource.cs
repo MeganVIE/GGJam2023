@@ -10,5 +10,7 @@ public class Resource
 
 public enum ResourceType
 {
-
+    Oxygen,
+    Biomaterials,
+    OreAlloy
 }

@@ -7,13 +7,16 @@ public class Ship : MonoBehaviour
 {
    [Header("Максимальное")]
    [SerializeField] private int m_maxHealth = 100;
-   [SerializeField] private int m_maxFuel = 100;
+   [SerializeField] private int m_maxEnergy = 100;
+   [SerializeField] private int m_MaxOxygen = 100;
    [Header("Текущее")]
    [SerializeField] private int m_health = 100;
-   [SerializeField] private int m_fuel = 100;
+   [SerializeField] private int m_energy = 100;
+   [SerializeField] private int m_oxygen = 100;
 
    public event Action OnFuelOut;
    public event Action OnHealthOut;
+   public event Action OnOxygenOut;
 
    public void Repair(int value)
    {
@@ -22,20 +25,37 @@ public class Ship : MonoBehaviour
          m_health = m_maxHealth;
    }
 
-   public void Fill(int value)
+   public void FillEnergy(int value)
    {
-      m_fuel += value;
-      if (m_fuel > m_maxFuel)
-         m_fuel = m_maxFuel;
+      m_energy += value;
+      if (m_energy > m_maxEnergy)
+         m_energy = m_maxEnergy;
    }
 
-   public void SpendFuel(int value)
+   public void FillOxygen(int value)
    {
-      m_fuel -= value;
-      if (m_fuel <= 0)
+      m_oxygen += value;
+      if (m_oxygen > m_MaxOxygen)
+         m_oxygen = m_MaxOxygen;
+   }
+
+   public void SpendEnergy(int value)
+   {
+      m_energy -= value;
+      if (m_energy <= 0)
       {
-         m_fuel = 0;
+         m_energy = 0;
          OnFuelOut?.Invoke();
+      }
+   }
+
+   public void SpendOxygen(int value)
+   {
+      m_oxygen -= value;
+      if (m_oxygen <= 0)
+      {
+         m_oxygen = 0;
+         OnOxygenOut?.Invoke();
       }
    }
 
