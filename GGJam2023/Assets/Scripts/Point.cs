@@ -17,12 +17,11 @@ public class Point : MonoBehaviour, IPointerClickHandler
     public int EnergySpend => m_EnergySpend;
     public string PointName => m_pointName;
 
-    public Action OnSelect;
+    public Action OnClicked;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        OnSelect?.Invoke();
-        UpdateSelectedStatus(true);
+        OnClicked?.Invoke();
     }
 
     public void UpdateCurrentStatus(bool value)

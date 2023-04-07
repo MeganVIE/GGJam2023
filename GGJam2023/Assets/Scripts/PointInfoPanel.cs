@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class PointInfoPanel : MonoBehaviour
 {
-    [SerializeField] private Ship m_ship;
     [SerializeField] private List<Path> m_paths;
     [Space]
     [SerializeField] private Button m_btn;
@@ -45,28 +44,20 @@ public class PointInfoPanel : MonoBehaviour
 
     private void InfoViewUpdate()
     {
-        if (m_ship.CurrentPoint == m_point)
-        {
-            m_oxygenInfo.SetValue(0);
-            m_energyInfo.SetValue(0);
-            m_healthInfo.SetValue(0);
-        }
-        else
-        {
-            m_oxygenInfo.SetValue(m_point.OxygenSpend);
-            m_energyInfo.SetValue(m_point.EnergySpend);
-            m_healthInfo.SetValue(m_point.HealthSpend);
-        }
+        m_oxygenInfo.SetValue(m_point.OxygenSpend);
+        m_energyInfo.SetValue(m_point.EnergySpend);
+        m_healthInfo.SetValue(m_point.HealthSpend);
         m_pointName.text = m_point.PointName;
     }
 
-    public void Show(Point point)
+    public void Show(Point point, Point currentPoint)
     {
         gameObject.SetActive(true);
-        m_btn.interactable = m_ship.CurrentPoint != point && m_paths.Any(p => p.CanFly(m_ship.CurrentPoint, point));
+        m_btn.interactable = currentPoint != point && m_paths.Any(p => p.CanFly(currentPoint, point));
 
         m_point?.UpdateSelectedStatus(false);
         m_point = point;
+        m_point.UpdateSelectedStatus(true);
 
         InfoViewUpdate();
     }

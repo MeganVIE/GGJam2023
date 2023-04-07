@@ -26,6 +26,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private Ship m_ship;
     [SerializeField] private GameObject m_shipStatesPanel;
     [SerializeField] private PointInfoPanel m_pointPanel;
+    [SerializeField] private PlanetInfoPanel m_planetPanel;
 
     private Dictionary<Point, Sprite> m_localBackgrounds;
     private Dictionary<Point, LocalPoint[]> m_localPoints;
@@ -42,7 +43,7 @@ public class SceneController : MonoBehaviour
 
         foreach (var point in m_globalPoints)
         {
-            point.OnSelect = () => m_pointPanel.Show(point);
+            point.OnClicked = () => OnGlobalPointClickHandler(point);
             m_localBackgrounds.Add(point, m_localSprites[Random.Range(0, m_localSprites.Length)]);
 
             m_localPoints.Add(point, new LocalPoint[3]);
@@ -61,6 +62,8 @@ public class SceneController : MonoBehaviour
 
         OnGlobalBtnClickHandler();
         Fly(m_ship.CurrentPoint);
+        m_pointPanel.gameObject.SetActive(false);
+        m_planetPanel.gameObject.SetActive(false);
 
         m_ship.OnEnergyOut += GameOver;
         m_ship.OnOxygenOut += GameOver;
@@ -70,7 +73,7 @@ public class SceneController : MonoBehaviour
 
     private void OnDestroy()
     {
-        m_globalPoints.ForEach(p => p.OnSelect = null);
+        m_globalPoints.ForEach(p => p.OnClicked = null);
 
         m_ship.OnEnergyOut -= GameOver;
         m_ship.OnOxygenOut -= GameOver;
@@ -83,6 +86,12 @@ public class SceneController : MonoBehaviour
         Debug.Log("Game Over");
     }
 
+    private void OnGlobalPointClickHandler(Point point)
+    {
+        if (m_ship.CurrentPoint != point)
+            m_pointPanel.Show(point, m_ship.CurrentPoint);
+    }
+
     private void OnLocalPointClickHandler(LocalPoint point)
     {
 
@@ -93,8 +102,12 @@ public class SceneController : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             m_localPoints[m_ship.CurrentPoint][i].gameObject.SetActive(false);
-            m_localPoints[point][i].gameObject.SetActive(true);
-            m_localPoints[point][i].transform.position = m_localPointTrs[i].position;
+            m_localPoints[m_ship.CurrentPoint][i].OnClicked = null;
+
+            var newPoint = m_localPoints[point][i];
+            newPoint.gameObject.SetActive(true);
+            newPoint.transform.position = m_localPointTrs[i].position;
+            newPoint.OnClicked = () => OnLocalPointClickHandler(newPoint);
         }
 
         m_localBackground.sprite = m_localBackgrounds[m_ship.CurrentPoint];
