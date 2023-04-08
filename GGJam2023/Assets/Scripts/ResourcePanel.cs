@@ -15,14 +15,24 @@ public class ResourcePanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_discText;
     [SerializeField] private Button m_useBtn;
 
-    public event Action OnDeleteClick;
-    public event Action OnUseClick;
+    private ShipCell m_cell;
+
+    public event Action<ShipCell> OnDeleteClick;
+    public event Action<ShipCell> OnUseClick;
 
     private void OnEnable()
     {
         m_closeBtn.onClick.AddListener(Hide);
-        m_deleteBtn.onClick.AddListener(() => OnDeleteClick?.Invoke());
-        m_useBtn.onClick.AddListener(() => OnUseClick?.Invoke());
+        m_deleteBtn.onClick.AddListener(() =>
+        {
+            OnDeleteClick?.Invoke(m_cell);
+            Hide();
+        });
+        m_useBtn.onClick.AddListener(() =>
+        {
+            OnUseClick?.Invoke(m_cell);
+            Hide();
+        });
     }
 
     private void OnDisable()
@@ -35,16 +45,19 @@ public class ResourcePanel : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+        m_cell = null;
     }
 
-    public void Show(ResourceType type)
+    public void Show(ShipCell cell)
     {
-        if (type == ResourceType.None)
+        if (cell.Type == ResourceType.None)
             return;
+
+        m_cell = cell;
 
         gameObject.SetActive(true);
 
-        var data = m_datas.First(d => d.Type == type);
+        var data = m_datas.First(d => d.Type == m_cell.Type);
         m_nameText.text = data.ResourceName;
         m_discText.text = data.ResourceDisc;
         m_useBtn.gameObject.SetActive(data.NeedUseButton);

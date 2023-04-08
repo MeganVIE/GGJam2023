@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Cabin
   m_EditorClassIdentifier: 
   Type: 9
-  ResourceName: 
+  ResourceName: "\u041C\u043E\u0441\u0442\u0438\u043A"
   ResourceDisc: 
   NeedUseButton: 1

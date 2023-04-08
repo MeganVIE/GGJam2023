@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AlloyOre
   m_EditorClassIdentifier: 
   Type: 1
-  ResourceName: 
+  ResourceName: "\u0421\u043F\u043B\u0430\u0432\u044B"
   ResourceDisc: 
   NeedUseButton: 0

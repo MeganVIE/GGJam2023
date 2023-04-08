@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Cryocapsule
   m_EditorClassIdentifier: 
   Type: 5
-  ResourceName: 
+  ResourceName: "\u041A\u0440\u0438\u043E\u043A\u0430\u043F\u0441\u0443\u043B\u044B"
   ResourceDisc: 
   NeedUseButton: 0

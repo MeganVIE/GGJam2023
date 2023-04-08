@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Biomaterials
   m_EditorClassIdentifier: 
   Type: 2
-  ResourceName: 
+  ResourceName: "\u0411\u0438\u043E\u043C\u0430\u0442\u0435\u0440\u0438\u0430\u043B\u044B"
   ResourceDisc: 
   NeedUseButton: 0

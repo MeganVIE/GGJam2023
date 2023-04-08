@@ -53,11 +53,25 @@ public class ShipStorage : MonoBehaviour
 
             cell.OnCellClick += OnCellClickHandler;
         }
+
+        m_panel.OnDeleteClick += OnDeleteClickHandler;
+        m_panel.OnUseClick += OnUseClickHandler;
     }
 
     private void OnCellClickHandler(ShipCell cell)
     {
-        m_panel.Show(cell.Type);
+        m_panel.Show(cell);
+    }
+
+    private void OnDeleteClickHandler(ShipCell cell)
+    {
+        m_resources[cell.Type].Remove(cell);
+        cell.ChangeResource(-MAX_SIZE);
+    }
+
+    private void OnUseClickHandler(ShipCell cell)
+    {
+
     }
 
     public void Show()

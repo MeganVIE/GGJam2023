@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PowerGenerator
   m_EditorClassIdentifier: 
   Type: 7
-  ResourceName: 
+  ResourceName: "\u0413\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440 \u044D\u043D\u0435\u0440\u0433\u0438\u0438"
   ResourceDisc: 
   NeedUseButton: 1
