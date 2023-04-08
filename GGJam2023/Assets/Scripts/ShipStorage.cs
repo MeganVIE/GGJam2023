@@ -93,7 +93,7 @@ public class ShipStorage : MonoBehaviour
                     if (TryUseResource(ResourceType.Biomaterials, 2.5f, ref needed, m_ship.ChangeOxygen))
                         return;
 
-                    TryUseResource(ResourceType.Gas, 2.5f, ref needed, m_ship.ChangeHealth);
+                    TryUseResource(ResourceType.Gas, 2.5f, ref needed, m_ship.ChangeOxygen);
                 }
                 break;
             case ResourceType.PowerGenerator:

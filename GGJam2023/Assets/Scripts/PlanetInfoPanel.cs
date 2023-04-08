@@ -45,8 +45,16 @@ public class PlanetInfoPanel : MonoBehaviour
         m_point = null;
     }
 
+    private void ClearView()
+    {
+        m_oxygenInfo.SetValue(0);
+        m_energyInfo.SetValue(0);
+        m_healthInfo.SetValue(0);
+    }
+
     public void Show(LocalPointQuestDataSO questData, LocalPoint point)
     {
+        ClearView();
         gameObject.SetActive(true);
         m_point = point;
         m_planetName.text = point.PointName;

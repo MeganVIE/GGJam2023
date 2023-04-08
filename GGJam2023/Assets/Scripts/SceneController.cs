@@ -125,7 +125,22 @@ public class SceneController : MonoBehaviour
 
     private void StartQuest(LocalPoint point)
     {
-        m_ship.SpendStates(point);
+        foreach (var data in m_localquestDatas[m_ship.CurrentPoint][point].ShipStateDatas)
+        {
+            switch (data.Type)
+            {
+                case ShipStateType.Energy:
+                    m_ship.ChangeEnergy(data.Value);
+                    break;
+                case ShipStateType.Health:
+                    m_ship.ChangeHealth(data.Value);
+                    break;
+                case ShipStateType.Oxygen:
+                    m_ship.ChangeOxygen(data.Value);
+                    break;
+            }
+        }
+
         m_resultPlanet.Show(m_localquestDatas[m_ship.CurrentPoint][point], point);
     }
 
