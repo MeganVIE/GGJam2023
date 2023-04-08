@@ -41,17 +41,19 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Ship.cs" />
-     <Compile Include="Assets\Scripts\LocalPoint.cs" />
-     <Compile Include="Assets\Scripts\Point.cs" />
-     <Compile Include="Assets\Scripts\PointInfoPanel.cs" />
-     <Compile Include="Assets\Scripts\ResourceInfoPanel.cs" />
-     <Compile Include="Assets\Scripts\Path.cs" />
      <Compile Include="Assets\Scripts\SceneController.cs" />
      <Compile Include="Assets\Scripts\ShipStatesPanel.cs" />
-     <Compile Include="Assets\Scripts\ShipState.cs" />
+     <Compile Include="Assets\Scripts\PointInfoPanel.cs" />
      <Compile Include="Assets\Scripts\PlanetInfoPanel.cs" />
+     <Compile Include="Assets\Scripts\Point.cs" />
+     <Compile Include="Assets\Scripts\Path.cs" />
+     <Compile Include="Assets\Scripts\Ship.cs" />
      <Compile Include="Assets\Scripts\LocalPointQuestDataSO.cs" />
+     <Compile Include="Assets\Scripts\ShipState.cs" />
+     <Compile Include="Assets\Scripts\ResourceInfoPanel.cs" />
+     <Compile Include="Assets\Scripts\LocalPoint.cs" />
+     <Compile Include="Assets\Scripts\RandomEventDataSO.cs" />
+     <Compile Include="Assets\Scripts\ResultPanel.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

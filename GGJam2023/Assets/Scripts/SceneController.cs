@@ -19,6 +19,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject m_localSpace;
     [SerializeField] private SpriteRenderer m_localBackground;
     [SerializeField] private PlanetInfoPanel m_planetPanel;
+    [SerializeField] private ResultPanel m_resultPlanet;
 
     [Header("Other")]
     [SerializeField] private Button m_globalBtn;
@@ -70,6 +71,7 @@ public class SceneController : MonoBehaviour
         Fly(m_ship.CurrentPoint);
         m_pointPanel.gameObject.SetActive(false);
         m_planetPanel.gameObject.SetActive(false);
+        m_resultPlanet.gameObject.SetActive(false);
 
         m_ship.OnEnergyOut += GameOver;
         m_ship.OnOxygenOut += GameOver;
@@ -108,6 +110,15 @@ public class SceneController : MonoBehaviour
     private void StartQuest(LocalPoint point)
     {
         m_ship.SpendStates(point);
+        m_resultPlanet.Show(m_localquestDatas[m_ship.CurrentPoint][point], point);
+        m_resultPlanet.OnOkClick += GetResources;
+    }
+
+    private void GetResources(LocalPoint point)
+    {
+        m_resultPlanet.OnOkClick -= GetResources;
+
+        var data = m_localquestDatas[m_ship.CurrentPoint][point];
         // todo
     }
 
