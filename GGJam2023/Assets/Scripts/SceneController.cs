@@ -26,7 +26,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private Button m_localBtn;
     [SerializeField] private Button m_shipBtn;
     [Space]
-    [SerializeField] private GameObject m_shipSpace;
+    [SerializeField] private ShipStorage m_storage;
     [SerializeField] private Ship m_ship;
     [SerializeField] private GameObject m_shipStatesPanel;
 
@@ -117,9 +117,7 @@ public class SceneController : MonoBehaviour
     private void GetResources(LocalPoint point)
     {
         m_resultPlanet.OnOkClick -= GetResources;
-
-        var data = m_localquestDatas[m_ship.CurrentPoint][point];
-        // todo
+        m_storage.SetResources(m_localquestDatas[m_ship.CurrentPoint][point].ResourceDatas);
     }
 
     private void Fly(Point point)
@@ -143,7 +141,7 @@ public class SceneController : MonoBehaviour
     {
         m_globalSpace.SetActive(true);
         m_localSpace.SetActive(false);
-        m_shipSpace.SetActive(false);
+        m_storage.Hide();
         m_shipStatesPanel.SetActive(false);
 
         m_globalBtn.interactable = false;
@@ -155,7 +153,7 @@ public class SceneController : MonoBehaviour
     {
         m_globalSpace.SetActive(false);
         m_localSpace.SetActive(true);
-        m_shipSpace.SetActive(false);
+        m_storage.Hide();
         m_shipStatesPanel.SetActive(true);
 
         m_globalBtn.interactable = true;
@@ -167,7 +165,7 @@ public class SceneController : MonoBehaviour
     {
         m_globalSpace.SetActive(false);
         m_localSpace.SetActive(false);
-        m_shipSpace.SetActive(true);
+        m_storage.Show();
         m_shipStatesPanel.SetActive(true);
 
         m_globalBtn.interactable = true;

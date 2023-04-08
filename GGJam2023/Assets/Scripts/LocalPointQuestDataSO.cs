@@ -32,5 +32,11 @@ public enum ResourceType
     Gas,
     AlloyOre,
     Biomaterials,
-    Crystals
+    Crystals,
+    None,
+    Cryocapsule,
+    Engine,
+    PowerGenerator,
+    OxygenGenerator,
+    Cabin
 }

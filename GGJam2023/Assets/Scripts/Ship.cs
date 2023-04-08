@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ship : MonoBehaviour
@@ -35,6 +33,9 @@ public class Ship : MonoBehaviour
 
    public void FlyToPoint(Point point)
    {
+      if (point == CurrentPoint)
+         return;
+
       m_point.UpdateCurrentStatus(false);
       m_point = point;
       m_point.UpdateCurrentStatus(true);

@@ -41,7 +41,7 @@ public class ResultPanel : MonoBehaviour
     {
         gameObject.SetActive(true);
         m_point = point;
-        m_disc.text = questData.Dicription;
+        m_disc.text = questData.Result;
 
         foreach (var data in questData.ResourceDatas)
         {
