@@ -56,68 +56,56 @@ public class Ship : MonoBehaviour
 
    public void SpendStates(Point point)
    {
-      SpendEnergy(point.EnergySpend);
-      SpendHealth(point.HealthSpend);
-      SpendOxygen(point.OxygenSpend);
+      ChangeEnergy(-point.EnergySpend);
+      ChangeHealth(-point.HealthSpend);
+      ChangeOxygen(-point.OxygenSpend);
    }
 
-   public void Repair(float value)
-   {
-      m_health += value;
-      if (m_health > m_maxHealth)
-         m_health = m_maxHealth;
-      m_statesPanel.UpdateHealthState(m_health);
-   }
-
-   public void FillEnergy(float value)
+   public void ChangeEnergy(float value)
    {
       m_energy += value;
+
       if (m_energy > m_maxEnergy)
          m_energy = m_maxEnergy;
-      m_statesPanel.UpdateEnergyState(m_energy);
-   }
-
-   public void FillOxygen(float value)
-   {
-      m_oxygen += value;
-      if (m_oxygen > m_maxOxygen)
-         m_oxygen = m_maxOxygen;
-      m_statesPanel.UpdateOxygenState(m_oxygen);
-   }
-
-   public void SpendEnergy(int value)
-   {
-      m_energy -= value;
-      m_statesPanel.UpdateEnergyState(m_energy);
 
       if (m_energy <= 0)
       {
          m_energy = 0;
          OnEnergyOut?.Invoke();
       }
+
+      m_statesPanel.UpdateEnergyState(m_energy);
    }
 
-   public void SpendOxygen(int value)
+   public void ChangeHealth(float value)
    {
-      m_oxygen -= value;
-      m_statesPanel.UpdateOxygenState(m_oxygen);
+      m_health += value;
 
-      if (m_oxygen <= 0)
-      {
-         m_oxygen = 0;
-         OnOxygenOut?.Invoke();
-      }
-   }
-
-   public void SpendHealth(int value)
-   {
-      m_health -= value;
-      m_statesPanel.UpdateHealthState(m_health);
+      if (m_health > m_maxHealth)
+         m_health = m_maxHealth;
 
       if (m_health <= 0)
       {
          m_health = 0;
-         OnHealthOut?.Invoke();
+         OnEnergyOut?.Invoke();
       }
+
+      m_statesPanel.UpdateHealthState(m_health);
+   }
+
+   public void ChangeOxygen(float value)
+   {
+      m_oxygen += value;
+
+      if (m_oxygen > m_maxOxygen)
+         m_oxygen = m_maxOxygen;
+
+      if (m_oxygen <= 0)
+      {
+         m_oxygen = 0;
+         OnEnergyOut?.Invoke();
+      }
+
+      m_statesPanel.UpdateOxygenState(m_oxygen);
    }
 }

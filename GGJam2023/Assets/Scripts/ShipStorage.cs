@@ -90,7 +90,7 @@ public class ShipStorage : MonoBehaviour
 
                             if (fromCell <= needed)
                             {
-                                m_ship.Repair(fromCell);
+                                m_ship.ChangeHealth(fromCell);
                                 needed -= fromCell;
                                 OnDeleteClickHandler(oc);
                             }
@@ -100,7 +100,7 @@ public class ShipStorage : MonoBehaviour
                                 if (needed % 5 > 0)
                                     count += 1;
 
-                                m_ship.Repair(needed);
+                                m_ship.ChangeHealth(needed);
                                 oc.ChangeResource(-count);
                             }
 
@@ -120,7 +120,7 @@ public class ShipStorage : MonoBehaviour
 
                             if (fromCell <= needed)
                             {
-                                m_ship.Repair(fromCell);
+                                m_ship.ChangeHealth(fromCell);
                                 needed -= fromCell;
                                 OnDeleteClickHandler(gc);
                             }
@@ -130,7 +130,7 @@ public class ShipStorage : MonoBehaviour
                                 if (needed % 5 > 0)
                                     count += 1;
 
-                                m_ship.Repair(needed);
+                                m_ship.ChangeHealth(needed);
                                 gc.ChangeResource(-count);
                             }
 
@@ -156,7 +156,7 @@ public class ShipStorage : MonoBehaviour
 
                             if (fromCell <= needed)
                             {
-                                m_ship.Repair(fromCell);
+                                m_ship.ChangeOxygen(fromCell);
                                 needed -= fromCell;
                                 OnDeleteClickHandler(oc);
                             }
@@ -166,7 +166,7 @@ public class ShipStorage : MonoBehaviour
                                 if (needed % 5 > 0)
                                     count += 1;
 
-                                m_ship.Repair(needed);
+                                m_ship.ChangeOxygen(needed);
                                 oc.ChangeResource(-count);
                             }
 
@@ -186,7 +186,7 @@ public class ShipStorage : MonoBehaviour
 
                             if (fromCell <= needed)
                             {
-                                m_ship.Repair(fromCell);
+                                m_ship.ChangeOxygen(fromCell);
                                 needed -= fromCell;
                                 OnDeleteClickHandler(gc);
                             }
@@ -196,7 +196,7 @@ public class ShipStorage : MonoBehaviour
                                 if (needed % 5 > 0)
                                     count += 1;
 
-                                m_ship.Repair(needed);
+                                m_ship.ChangeOxygen(needed);
                                 gc.ChangeResource(-count);
                             }
 
@@ -222,7 +222,7 @@ public class ShipStorage : MonoBehaviour
 
                             if (fromCell <= needed)
                             {
-                                m_ship.Repair(fromCell);
+                                m_ship.ChangeEnergy(fromCell);
                                 needed -= fromCell;
                                 OnDeleteClickHandler(oc);
                             }
@@ -232,7 +232,7 @@ public class ShipStorage : MonoBehaviour
                                 if (needed % 5 > 0)
                                     count += 1;
 
-                                m_ship.Repair(needed);
+                                m_ship.ChangeEnergy(needed);
                                 oc.ChangeResource(-count);
                             }
 
@@ -252,7 +252,7 @@ public class ShipStorage : MonoBehaviour
 
                             if (fromCell <= needed)
                             {
-                                m_ship.Repair(fromCell);
+                                m_ship.ChangeEnergy(fromCell);
                                 needed -= fromCell;
                                 OnDeleteClickHandler(gc);
                             }
@@ -262,7 +262,7 @@ public class ShipStorage : MonoBehaviour
                                 if (needed % 5 > 0)
                                     count += 1;
 
-                                m_ship.Repair(needed);
+                                m_ship.ChangeEnergy(needed);
                                 gc.ChangeResource(-count);
                             }
 

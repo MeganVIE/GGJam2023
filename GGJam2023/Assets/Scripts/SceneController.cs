@@ -80,6 +80,8 @@ public class SceneController : MonoBehaviour
         m_ship.OnHealthOut += GameOver;
         m_pointPanel.OnFlyClicked += Fly;
         m_planetPanel.OnOkClick += StartQuest;
+        m_resultPlanet.OnOkClick += GetResources;
+        m_resultPlanet.OnEventOkClick += EventHandler;
     }
 
     private void OnDestroy()
@@ -91,6 +93,8 @@ public class SceneController : MonoBehaviour
         m_ship.OnHealthOut -= GameOver;
         m_pointPanel.OnFlyClicked -= Fly;
         m_planetPanel.OnOkClick -= StartQuest;
+        m_resultPlanet.OnOkClick -= GetResources;
+        m_resultPlanet.OnEventOkClick -= EventHandler;
     }
 
     private void GameOver()
@@ -113,12 +117,10 @@ public class SceneController : MonoBehaviour
     {
         m_ship.SpendStates(point);
         m_resultPlanet.Show(m_localquestDatas[m_ship.CurrentPoint][point], point);
-        m_resultPlanet.OnOkClick += GetResources;
     }
 
     private void GetResources(LocalPoint point)
     {
-        m_resultPlanet.OnOkClick -= GetResources;
         m_storage.SetResources(m_localquestDatas[m_ship.CurrentPoint][point].ResourceDatas);
     }
 
@@ -136,7 +138,32 @@ public class SceneController : MonoBehaviour
         }
 
         m_localBackground.sprite = m_localBackgrounds[m_ship.CurrentPoint];
+
+        if (point != m_ship.CurrentPoint)
+            m_resultPlanet.Show(m_randomEvents[Random.Range(0, m_randomEvents.Length)]);
+
         m_ship.FlyToPoint(point);
+    }
+
+    private void EventHandler(RandomEventDataSO eventData)
+    {
+        m_storage.SetResources(eventData.ResourceDatas);
+
+        foreach (var data in eventData.ShipStateDatas)
+        {
+            switch (data.Type)
+            {
+                case ShipStateType.Energy:
+                    m_ship.ChangeEnergy(data.Value);
+                    break;
+                case ShipStateType.Health:
+                    m_ship.ChangeHealth(data.Value);
+                    break;
+                case ShipStateType.Oxygen:
+                    m_ship.ChangeOxygen(data.Value);
+                    break;
+            }
+        }
     }
 
     public void OnGlobalBtnClickHandler()
