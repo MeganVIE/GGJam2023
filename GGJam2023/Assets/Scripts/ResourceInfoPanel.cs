@@ -8,6 +8,6 @@ public class ResourceInfoPanel : MonoBehaviour
     public void SetValue(int value)
     {
         m_value.text = value.ToString();
-        gameObject.SetActive(value>0);
+        gameObject.SetActive(value != 0);
     }
 }

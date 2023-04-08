@@ -158,6 +158,22 @@ PrefabInstance:
       propertyPath: m_OxygenSpend
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 988528656159519581, guid: 4556c1046803b0c4997907e5b97c4cc2, type: 3}
+      propertyPath: m_isFinalPoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285359155244158022, guid: 4556c1046803b0c4997907e5b97c4cc2, type: 3}
+      propertyPath: m_Radius
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285359155244158022, guid: 4556c1046803b0c4997907e5b97c4cc2, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1285359155244158022, guid: 4556c1046803b0c4997907e5b97c4cc2, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.09
+      objectReference: {fileID: 0}
     - target: {fileID: 1681010438449290390, guid: 4556c1046803b0c4997907e5b97c4cc2, type: 3}
       propertyPath: m_Sprite
       value: 

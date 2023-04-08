@@ -104,6 +104,11 @@ public class SceneController : MonoBehaviour
 
     private void GameOver(EndType type)
     {
+        m_pointPanel.gameObject.SetActive(false);
+        m_planetPanel.gameObject.SetActive(false);
+        m_resultPlanet.gameObject.SetActive(false);
+        m_gameOverPanel.gameObject.SetActive(false);
+        m_menuPanel.gameObject.SetActive(false);
         m_gameOverPanel.Show(type);
     }
 
