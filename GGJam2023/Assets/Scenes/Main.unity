@@ -1658,7 +1658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &382441202
 Transform:
   m_ObjectHideFlags: 0
@@ -3357,11 +3357,6 @@ MonoBehaviour:
   m_line: {fileID: 645775879}
   m_pointFrom: {fileID: 1158253602}
   m_pointTo: {fileID: 1399219175}
---- !u!1 &659820050 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 158868263252879076, guid: 565f7add806bfe74eabfad78aed806fe, type: 3}
-  m_PrefabInstance: {fileID: 158868262662269174}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &659820051 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 158868263252879077, guid: 565f7add806bfe74eabfad78aed806fe, type: 3}
@@ -3372,7 +3367,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 158868263252879072, guid: 565f7add806bfe74eabfad78aed806fe, type: 3}
   m_PrefabInstance: {fileID: 158868262662269174}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659820050}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81974cd340b41f040b15724c84d76224, type: 3}
@@ -4635,6 +4630,18 @@ MonoBehaviour:
   - {fileID: 1175580323}
   - {fileID: 1166135289}
   m_pointPanel: {fileID: 1303902061}
+  m_randomEvents:
+  - {fileID: 11400000, guid: 8942ffe1f7199a045969125fd498cbd8, type: 2}
+  - {fileID: 11400000, guid: 5fd266d0cc1991d4f8a09f9c589c6799, type: 2}
+  - {fileID: 11400000, guid: 03adfad4fa66690469fa8df1ee05e19a, type: 2}
+  - {fileID: 11400000, guid: efd8771f489b7fd4d9abd687f302fa1d, type: 2}
+  - {fileID: 11400000, guid: 62c8b64ba2d87be4390b636f6f115cc6, type: 2}
+  - {fileID: 11400000, guid: 43070072dfb285743804f05986a4916a, type: 2}
+  - {fileID: 11400000, guid: 5ca03fa764c42344695f1cb21e4c66fb, type: 2}
+  - {fileID: 11400000, guid: 2b535138d1be02e4382d205823acb5b4, type: 2}
+  - {fileID: 11400000, guid: 07a135eb29f349b4f87133729f405de4, type: 2}
+  - {fileID: 11400000, guid: 19fef82235b94a84aaab4609defec934, type: 2}
+  - {fileID: 11400000, guid: 7f072e6358dfb5b43a073c14254d7097, type: 2}
   m_localSprites:
   - {fileID: 21300000, guid: aafc30ba38d21784fb06c0a33085382c, type: 3}
   - {fileID: 21300000, guid: 1134580e8e04b5d4f96792671397350d, type: 3}
@@ -4687,7 +4694,6 @@ MonoBehaviour:
   m_shipBtn: {fileID: 1201148612}
   m_storage: {fileID: 1414988178}
   m_ship: {fileID: 1117433987}
-  m_shipStatesPanel: {fileID: 659820050}
 --- !u!4 &944362612
 Transform:
   m_ObjectHideFlags: 0

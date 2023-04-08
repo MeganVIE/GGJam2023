@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject m_globalSpace;
     [SerializeField] private List<Point> m_globalPoints;
     [SerializeField] private PointInfoPanel m_pointPanel;
+    [SerializeField] private RandomEventDataSO[] m_randomEvents;
 
     [Header("Local space")]
     [SerializeField] private Sprite[] m_localSprites;
