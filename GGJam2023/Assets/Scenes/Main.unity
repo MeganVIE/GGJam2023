@@ -4671,6 +4671,13 @@ MonoBehaviour:
   - {fileID: 1466095985}
   m_questdatas:
   - {fileID: 11400000, guid: b81a46cfb1f59a849819f38fd7518aa8, type: 2}
+  - {fileID: 11400000, guid: 4f769c49576071f4fa7b494f2d9ac046, type: 2}
+  - {fileID: 11400000, guid: 60121068735b3af41b0708ae33d0902b, type: 2}
+  - {fileID: 11400000, guid: 379f472831fd0304e92b82f3538b573b, type: 2}
+  - {fileID: 11400000, guid: 9d77addf5290de64a858c4ee3a83c5fa, type: 2}
+  - {fileID: 11400000, guid: 032d5b6e2cbfb4748909f71ea025bb30, type: 2}
+  - {fileID: 11400000, guid: 80e3eb7dbe6eaf1489d5ea906a02fbfa, type: 2}
+  - {fileID: 11400000, guid: 0d94514344155fd47a2f228d126fc91d, type: 2}
   m_localSpace: {fileID: 382441201}
   m_localBackground: {fileID: 2091367459}
   m_planetPanel: {fileID: 894956206}

@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class LocalPoint : Point
 {
-   [SerializeField] private SpriteRenderer m_icon;
+   [SerializeField] private LocalPointQuestDataSO m_quest;
 
-   public void SetIcon(Sprite sprite) => m_icon.sprite = sprite;
+   public LocalPointQuestDataSO Quest => m_quest;
+
+   public void SetQuest(LocalPointQuestDataSO quest) => m_quest = quest;
 }

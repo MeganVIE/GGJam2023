@@ -28,7 +28,6 @@ public class SceneController : MonoBehaviour
     [Space]
     [SerializeField] private ShipStorage m_storage;
     [SerializeField] private Ship m_ship;
-    [SerializeField] private GameObject m_shipStatesPanel;
 
     private Dictionary<Point, Sprite> m_localBackgrounds;
     private Dictionary<Point, LocalPoint[]> m_localPoints;
@@ -63,7 +62,9 @@ public class SceneController : MonoBehaviour
                 }
                 lps.Add(localPoint);
                 m_localPoints[point][i] = localPoint;
-                m_localquestDatas[point].Add(localPoint, m_questdatas[Random.Range(0, m_questdatas.Length)]);
+                if(localPoint.Quest==null)
+                    localPoint.SetQuest(m_questdatas[Random.Range(0, m_questdatas.Length)]);
+                m_localquestDatas[point].Add(localPoint, localPoint.Quest);
             }
         }
 

@@ -288,6 +288,7 @@ public class ShipStorage : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+        m_panel.Hide();
     }
 
     public void SetResources(List<Data<ResourceType>> resourceDatas)
