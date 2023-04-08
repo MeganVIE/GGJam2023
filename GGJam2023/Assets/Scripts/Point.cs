@@ -11,11 +11,14 @@ public class Point : MonoBehaviour, IPointerClickHandler
     [SerializeField] private int m_HealthSpend;
     [SerializeField] private int m_EnergySpend;
     [SerializeField] private string m_pointName;
+    [SerializeField] private bool m_isFinalPoint;
 
     public int OxygenSpend => m_OxygenSpend;
     public int HealthSpend => m_HealthSpend;
     public int EnergySpend => m_EnergySpend;
     public string PointName => m_pointName;
+
+    public bool IsFinalPoint => m_isFinalPoint;
 
     public Action OnClicked;
 

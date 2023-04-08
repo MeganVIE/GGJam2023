@@ -29,9 +29,9 @@ public class Ship : MonoBehaviour
    public bool FullEnergy => m_maxEnergy - m_energy == 0;
    public bool FullOxygen => m_maxOxygen - m_oxygen == 0;
 
-   public event Action OnEnergyOut;
-   public event Action OnHealthOut;
-   public event Action OnOxygenOut;
+   public Action OnEnergyOut;
+   public Action OnHealthOut;
+   public Action OnOxygenOut;
 
    private void Awake()
    {

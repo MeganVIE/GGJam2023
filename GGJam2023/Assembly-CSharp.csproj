@@ -58,6 +58,9 @@
      <Compile Include="Assets\Scripts\ShipStorage.cs" />
      <Compile Include="Assets\Scripts\ResourcePanel.cs" />
      <Compile Include="Assets\Scripts\ResourcePanelDataSO.cs" />
+     <Compile Include="Assets\Scripts\GameOverPanel.cs" />
+     <Compile Include="Assets\Scripts\StartPanel.cs" />
+     <Compile Include="Assets\Scripts\MenuPanel.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

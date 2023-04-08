@@ -29,6 +29,9 @@ public class SceneController : MonoBehaviour
     [Space]
     [SerializeField] private ShipStorage m_storage;
     [SerializeField] private Ship m_ship;
+    [Space]
+    [SerializeField] private GameOverPanel m_gameOverPanel;
+    [SerializeField] private MenuPanel m_menuPanel;
 
     private Dictionary<Point, Sprite> m_localBackgrounds;
     private Dictionary<Point, LocalPoint[]> m_localPoints;
@@ -74,10 +77,12 @@ public class SceneController : MonoBehaviour
         m_pointPanel.gameObject.SetActive(false);
         m_planetPanel.gameObject.SetActive(false);
         m_resultPlanet.gameObject.SetActive(false);
+        m_gameOverPanel.gameObject.SetActive(false);
+        m_menuPanel.gameObject.SetActive(false);
 
-        m_ship.OnEnergyOut += GameOver;
-        m_ship.OnOxygenOut += GameOver;
-        m_ship.OnHealthOut += GameOver;
+        m_ship.OnEnergyOut = () => GameOver(EndType.Energy);
+        m_ship.OnOxygenOut = () => GameOver(EndType.Oxygen);
+        m_ship.OnHealthOut = () => GameOver(EndType.Health);
         m_pointPanel.OnFlyClicked += Fly;
         m_planetPanel.OnOkClick += StartQuest;
         m_resultPlanet.OnOkClick += GetResources;
@@ -88,18 +93,18 @@ public class SceneController : MonoBehaviour
     {
         m_globalPoints.ForEach(p => p.OnClicked = null);
 
-        m_ship.OnEnergyOut -= GameOver;
-        m_ship.OnOxygenOut -= GameOver;
-        m_ship.OnHealthOut -= GameOver;
+        m_ship.OnEnergyOut = null;
+        m_ship.OnOxygenOut = null;
+        m_ship.OnHealthOut = null;
         m_pointPanel.OnFlyClicked -= Fly;
         m_planetPanel.OnOkClick -= StartQuest;
         m_resultPlanet.OnOkClick -= GetResources;
         m_resultPlanet.OnEventOkClick -= EventHandler;
     }
 
-    private void GameOver()
+    private void GameOver(EndType type)
     {
-        Debug.Log("Game Over");
+        m_gameOverPanel.Show(type);
     }
 
     private void OnGlobalPointClickHandler(Point point)
@@ -142,6 +147,8 @@ public class SceneController : MonoBehaviour
         if (point != m_ship.CurrentPoint)
             m_resultPlanet.Show(m_randomEvents[Random.Range(0, m_randomEvents.Length)]);
 
+        if (point.IsFinalPoint)
+            GameOver(EndType.Good);
         m_ship.FlyToPoint(point);
     }
 

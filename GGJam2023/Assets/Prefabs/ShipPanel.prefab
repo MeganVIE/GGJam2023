@@ -421,6 +421,7 @@ MonoBehaviour:
   - {fileID: 4333797765537168965}
   - {fileID: 5576858449985631830}
   m_panel: {fileID: 6000618452843991022}
+  m_ship: {fileID: 0}
   m_spriteGas: {fileID: 21300000, guid: 1d8e809ba98a2514497b745336cef001, type: 3}
   m_spriteAlloyOre: {fileID: 21300000, guid: 78890f3f872d6874c9c5be6c8a50aa95, type: 3}
   m_spriteBiomaterials: {fileID: 21300000, guid: 303fecbb2cd97ee43946ccce20d97652, type: 3}
@@ -1190,7 +1191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300126, guid: 6d0c3e2a3a9f42843917bab9397c1174, type: 3}
+  m_Sprite: {fileID: 21300106, guid: 6d0c3e2a3a9f42843917bab9397c1174, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
