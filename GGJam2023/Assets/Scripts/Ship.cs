@@ -87,7 +87,7 @@ public class Ship : MonoBehaviour
       if (m_health <= 0)
       {
          m_health = 0;
-         OnEnergyOut?.Invoke();
+         OnHealthOut?.Invoke();
       }
 
       m_statesPanel.UpdateHealthState(m_health);
@@ -103,7 +103,7 @@ public class Ship : MonoBehaviour
       if (m_oxygen <= 0)
       {
          m_oxygen = 0;
-         OnEnergyOut?.Invoke();
+         OnOxygenOut?.Invoke();
       }
 
       m_statesPanel.UpdateOxygenState(m_oxygen);
