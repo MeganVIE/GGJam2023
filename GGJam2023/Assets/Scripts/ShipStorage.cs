@@ -7,6 +7,7 @@ public class ShipStorage : MonoBehaviour
 {
     [SerializeField] private List<ShipCell> m_cells;
     [SerializeField] private ResourcePanel m_panel;
+    [SerializeField] private Ship m_ship;
     [Space]
     [SerializeField] private Sprite m_spriteGas;
     [SerializeField] private Sprite m_spriteAlloyOre;
@@ -71,7 +72,207 @@ public class ShipStorage : MonoBehaviour
 
     private void OnUseClickHandler(ShipCell cell)
     {
+        switch (cell.Type)
+        {
+            case ResourceType.Cabin:
+                if (!m_ship.FullHealth)
+                {
+                    float needed = m_ship.MaxHealth - m_ship.Health;
 
+                    var oreCells = new List<ShipCell>(m_resources[ResourceType.AlloyOre]);
+                    if (oreCells.Count > 0)
+                    {
+                        oreCells.Sort((c1, c2) => c1.Amount.CompareTo(c2.Amount));
+
+                        foreach (var oc in oreCells)
+                        {
+                            var fromCell = oc.Amount * 5;
+
+                            if (fromCell <= needed)
+                            {
+                                m_ship.Repair(fromCell);
+                                needed -= fromCell;
+                                OnDeleteClickHandler(oc);
+                            }
+                            else
+                            {
+                                int count = (int)(needed * .2f);
+                                if (needed % 5 > 0)
+                                    count += 1;
+
+                                m_ship.Repair(needed);
+                                oc.ChangeResource(-count);
+                            }
+
+                            if (m_ship.FullHealth)
+                                return;
+                        }
+                    }
+
+                    var gasCells = new List<ShipCell>(m_resources[ResourceType.Gas]);
+                    if (gasCells.Count > 0)
+                    {
+                        gasCells.Sort((c1, c2) => c1.Amount.CompareTo(c2.Amount));
+
+                        foreach (var gc in gasCells)
+                        {
+                            var fromCell = gc.Amount * 2.5f;
+
+                            if (fromCell <= needed)
+                            {
+                                m_ship.Repair(fromCell);
+                                needed -= fromCell;
+                                OnDeleteClickHandler(gc);
+                            }
+                            else
+                            {
+                                int count = (int)(needed * .4f);
+                                if (needed % 5 > 0)
+                                    count += 1;
+
+                                m_ship.Repair(needed);
+                                gc.ChangeResource(-count);
+                            }
+
+                            if (m_ship.FullHealth)
+                                return;
+                        }
+                    }
+                }
+                break;
+            case ResourceType.OxygenGenerator:
+                if (!m_ship.FullOxygen)
+                {
+                    float needed = m_ship.MaxOxygen - m_ship.Oxygen;
+
+                    var oreCells = new List<ShipCell>(m_resources[ResourceType.Biomaterials]);
+                    if (oreCells.Count > 0)
+                    {
+                        oreCells.Sort((c1, c2) => c1.Amount.CompareTo(c2.Amount));
+
+                        foreach (var oc in oreCells)
+                        {
+                            var fromCell = oc.Amount * 2.5f;
+
+                            if (fromCell <= needed)
+                            {
+                                m_ship.Repair(fromCell);
+                                needed -= fromCell;
+                                OnDeleteClickHandler(oc);
+                            }
+                            else
+                            {
+                                int count = (int)(needed * .4f);
+                                if (needed % 5 > 0)
+                                    count += 1;
+
+                                m_ship.Repair(needed);
+                                oc.ChangeResource(-count);
+                            }
+
+                            if (m_ship.FullHealth)
+                                return;
+                        }
+                    }
+
+                    var gasCells = new List<ShipCell>(m_resources[ResourceType.Gas]);
+                    if (gasCells.Count > 0)
+                    {
+                        gasCells.Sort((c1, c2) => c1.Amount.CompareTo(c2.Amount));
+
+                        foreach (var gc in gasCells)
+                        {
+                            var fromCell = gc.Amount * 2.5f;
+
+                            if (fromCell <= needed)
+                            {
+                                m_ship.Repair(fromCell);
+                                needed -= fromCell;
+                                OnDeleteClickHandler(gc);
+                            }
+                            else
+                            {
+                                int count = (int)(needed * .4f);
+                                if (needed % 5 > 0)
+                                    count += 1;
+
+                                m_ship.Repair(needed);
+                                gc.ChangeResource(-count);
+                            }
+
+                            if (m_ship.FullHealth)
+                                return;
+                        }
+                    }
+                }
+                break;
+            case ResourceType.PowerGenerator:
+                if (!m_ship.FullEnergy)
+                {
+                    float needed = m_ship.MaxEnergy - m_ship.Energy;
+
+                    var oreCells = new List<ShipCell>(m_resources[ResourceType.Crystals]);
+                    if (oreCells.Count > 0)
+                    {
+                        oreCells.Sort((c1, c2) => c1.Amount.CompareTo(c2.Amount));
+
+                        foreach (var oc in oreCells)
+                        {
+                            var fromCell = oc.Amount * 5;
+
+                            if (fromCell <= needed)
+                            {
+                                m_ship.Repair(fromCell);
+                                needed -= fromCell;
+                                OnDeleteClickHandler(oc);
+                            }
+                            else
+                            {
+                                int count = (int)(needed * .2f);
+                                if (needed % 5 > 0)
+                                    count += 1;
+
+                                m_ship.Repair(needed);
+                                oc.ChangeResource(-count);
+                            }
+
+                            if (m_ship.FullHealth)
+                                return;
+                        }
+                    }
+
+                    var gasCells = new List<ShipCell>(m_resources[ResourceType.Biomaterials]);
+                    if (gasCells.Count > 0)
+                    {
+                        gasCells.Sort((c1, c2) => c1.Amount.CompareTo(c2.Amount));
+
+                        foreach (var gc in gasCells)
+                        {
+                            var fromCell = gc.Amount * 2.5f;
+
+                            if (fromCell <= needed)
+                            {
+                                m_ship.Repair(fromCell);
+                                needed -= fromCell;
+                                OnDeleteClickHandler(gc);
+                            }
+                            else
+                            {
+                                int count = (int)(needed * .4f);
+                                if (needed % 5 > 0)
+                                    count += 1;
+
+                                m_ship.Repair(needed);
+                                gc.ChangeResource(-count);
+                            }
+
+                            if (m_ship.FullHealth)
+                                return;
+                        }
+                    }
+                }
+                break;
+        }
     }
 
     public void Show()

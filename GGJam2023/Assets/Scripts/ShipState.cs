@@ -24,7 +24,7 @@ public class ShipState : MonoBehaviour
         UpdateView();
     }
 
-    public void SetCurrentValue(int value)
+    public void SetCurrentValue(float value)
     {
         m_value = value;
         UpdateView();

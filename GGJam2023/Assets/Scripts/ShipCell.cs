@@ -31,7 +31,7 @@ public class ShipCell : MonoBehaviour
         m_amount += value;
         m_amountText.text = m_amount.ToString();
 
-        if (m_amount == 0)
+        if (m_amount <= 0)
         {
             m_icon.sprite = null;
             m_amountText.text = String.Empty;

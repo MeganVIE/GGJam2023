@@ -15,14 +15,14 @@ public class ShipStatesPanel : MonoBehaviour
         SetHealthMaxValue(health);
     }
 
-    public void UpdateValues(int oxygen, int energy, int health)
+    public void UpdateValues(float oxygen, float energy, float health)
     {
         UpdateEnergyState(energy);
         UpdateOxygenState(oxygen);
         UpdateHealthState(health);
     }
 
-    public void UpdateEnergyState(int value)
+    public void UpdateEnergyState(float value)
     {
         m_energyState.SetCurrentValue(value);
     }
@@ -32,7 +32,7 @@ public class ShipStatesPanel : MonoBehaviour
         m_energyState.SetMaxValue(value);
     }
 
-    public void UpdateHealthState(int value)
+    public void UpdateHealthState(float value)
     {
         m_healthState.SetCurrentValue(value);
     }
@@ -42,7 +42,7 @@ public class ShipStatesPanel : MonoBehaviour
         m_healthState.SetMaxValue(value);
     }
 
-    public void UpdateOxygenState(int value)
+    public void UpdateOxygenState(float value)
     {
         m_oxygenState.SetCurrentValue(value);
     }

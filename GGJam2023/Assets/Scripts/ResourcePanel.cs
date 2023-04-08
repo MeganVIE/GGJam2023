@@ -28,11 +28,7 @@ public class ResourcePanel : MonoBehaviour
             OnDeleteClick?.Invoke(m_cell);
             Hide();
         });
-        m_useBtn.onClick.AddListener(() =>
-        {
-            OnUseClick?.Invoke(m_cell);
-            Hide();
-        });
+        m_useBtn.onClick.AddListener(() => OnUseClick?.Invoke(m_cell));
     }
 
     private void OnDisable()
