@@ -22,7 +22,7 @@ public class PointInfoPanel : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
-        m_point.UpdateSelectedStatus(false);
+        m_point?.UpdateSelectedStatus(false);
         m_point = null;
     }
 

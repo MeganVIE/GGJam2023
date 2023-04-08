@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class ShipStorage : MonoBehaviour
 {
     [SerializeField] private List<ShipCell> m_cells;
+    [SerializeField] private ResourcePanel m_panel;
     [Space]
     [SerializeField] private Sprite m_spriteGas;
     [SerializeField] private Sprite m_spriteAlloyOre;
@@ -20,6 +22,11 @@ public class ShipStorage : MonoBehaviour
 
     private Dictionary<ResourceType, List<ShipCell>> m_resources;
     private Dictionary<ResourceType, Sprite> m_sprites;
+
+    private void Start()
+    {
+        Init();
+    }
 
     private void Init()
     {
@@ -43,7 +50,14 @@ public class ShipStorage : MonoBehaviour
             if (!m_resources.ContainsKey(cell.Type))
                 m_resources.Add(cell.Type, new List<ShipCell>());
             m_resources[cell.Type].Add(cell);
+
+            cell.OnCellClick += OnCellClickHandler;
         }
+    }
+
+    private void OnCellClickHandler(ShipCell cell)
+    {
+        m_panel.Show(cell.Type);
     }
 
     public void Show()

@@ -142,7 +142,6 @@ public class SceneController : MonoBehaviour
         m_globalSpace.SetActive(true);
         m_localSpace.SetActive(false);
         m_storage.Hide();
-        m_shipStatesPanel.SetActive(false);
 
         m_globalBtn.interactable = false;
         m_localBtn.interactable = true;
@@ -154,7 +153,7 @@ public class SceneController : MonoBehaviour
         m_globalSpace.SetActive(false);
         m_localSpace.SetActive(true);
         m_storage.Hide();
-        m_shipStatesPanel.SetActive(true);
+        m_pointPanel.Hide();
 
         m_globalBtn.interactable = true;
         m_localBtn.interactable = false;
@@ -166,7 +165,7 @@ public class SceneController : MonoBehaviour
         m_globalSpace.SetActive(false);
         m_localSpace.SetActive(false);
         m_storage.Show();
-        m_shipStatesPanel.SetActive(true);
+        m_pointPanel.Hide();
 
         m_globalBtn.interactable = true;
         m_localBtn.interactable = true;

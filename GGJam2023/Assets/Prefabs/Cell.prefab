@@ -139,6 +139,7 @@ MonoBehaviour:
   m_amountText: {fileID: 3044653699642594234}
   m_type: 4
   m_amount: 0
+  m_btn: {fileID: 3044653699622652799}
 --- !u!1 &3044653699642594236
 GameObject:
   m_ObjectHideFlags: 0
