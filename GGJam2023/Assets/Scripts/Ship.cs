@@ -39,9 +39,14 @@ public class Ship : MonoBehaviour
       m_point = point;
       m_point.UpdateCurrentStatus(true);
 
-      SpendEnergy(m_point.EnergySpend);
-      SpendHealth(m_point.HealthSpend);
-      SpendOxygen(m_point.OxygenSpend);
+      SpendStates(m_point);
+   }
+
+   public void SpendStates(Point point)
+   {
+      SpendEnergy(point.EnergySpend);
+      SpendHealth(point.HealthSpend);
+      SpendOxygen(point.OxygenSpend);
    }
 
    public void Repair(int value)

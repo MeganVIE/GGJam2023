@@ -4632,6 +4632,7 @@ MonoBehaviour:
   - {fileID: 407913302}
   - {fileID: 1175580323}
   - {fileID: 1166135289}
+  m_pointPanel: {fileID: 1303902061}
   m_localSprites:
   - {fileID: 21300000, guid: aafc30ba38d21784fb06c0a33085382c, type: 3}
   - {fileID: 21300000, guid: 1134580e8e04b5d4f96792671397350d, type: 3}
@@ -4666,16 +4667,17 @@ MonoBehaviour:
   - {fileID: 1098089299}
   - {fileID: 1713396028}
   - {fileID: 1466095985}
+  m_questdatas:
+  - {fileID: 11400000, guid: b81a46cfb1f59a849819f38fd7518aa8, type: 2}
   m_localSpace: {fileID: 382441201}
   m_localBackground: {fileID: 2091367459}
+  m_planetPanel: {fileID: 894956206}
   m_globalBtn: {fileID: 1926761527}
   m_localBtn: {fileID: 640977141}
   m_shipBtn: {fileID: 1201148612}
   m_shipSpace: {fileID: 1795512767}
   m_ship: {fileID: 1117433987}
   m_shipStatesPanel: {fileID: 659820050}
-  m_pointPanel: {fileID: 1303902061}
-  m_planetPanel: {fileID: 0}
 --- !u!4 &944362612
 Transform:
   m_ObjectHideFlags: 0
@@ -9426,6 +9428,10 @@ PrefabInstance:
     - target: {fileID: 1690924649070961921, guid: 0554ff18d972d3447898c13b5e9f40bc, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 77.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690924649070961921, guid: 0554ff18d972d3447898c13b5e9f40bc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.22000122
       objectReference: {fileID: 0}
     - target: {fileID: 2369282933831694335, guid: 0554ff18d972d3447898c13b5e9f40bc, type: 3}
       propertyPath: m_Pivot.x

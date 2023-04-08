@@ -8,14 +8,17 @@ public class SceneController : MonoBehaviour
     [Header("Global space")]
     [SerializeField] private GameObject m_globalSpace;
     [SerializeField] private List<Point> m_globalPoints;
+    [SerializeField] private PointInfoPanel m_pointPanel;
 
     [Header("Local space")]
     [SerializeField] private Sprite[] m_localSprites;
     [SerializeField] private Transform[] m_localPointTrs;
     [SerializeField] private LocalPoint[] m_localPointPrefabs;
+    [SerializeField] private LocalPointQuestDataSO[] m_questdatas;
     [Space]
     [SerializeField] private GameObject m_localSpace;
     [SerializeField] private SpriteRenderer m_localBackground;
+    [SerializeField] private PlanetInfoPanel m_planetPanel;
 
     [Header("Other")]
     [SerializeField] private Button m_globalBtn;
@@ -25,20 +28,20 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject m_shipSpace;
     [SerializeField] private Ship m_ship;
     [SerializeField] private GameObject m_shipStatesPanel;
-    [SerializeField] private PointInfoPanel m_pointPanel;
-    [SerializeField] private PlanetInfoPanel m_planetPanel;
 
     private Dictionary<Point, Sprite> m_localBackgrounds;
     private Dictionary<Point, LocalPoint[]> m_localPoints;
+    private Dictionary<Point,Dictionary<LocalPoint, LocalPointQuestDataSO>> m_localquestDatas;
 
     private void Start()
     {
         m_localBackgrounds = new Dictionary<Point, Sprite>();
         m_localPoints = new Dictionary<Point, LocalPoint[]>();
+        m_localquestDatas = new Dictionary<Point,Dictionary<LocalPoint, LocalPointQuestDataSO>>();
 
-        for (var i = 0; i < m_localPointPrefabs.Length; i++)
+        foreach (var lp in m_localPointPrefabs)
         {
-            m_localPointPrefabs[i].gameObject.SetActive(false);
+            lp.gameObject.SetActive(false);
         }
 
         foreach (var point in m_globalPoints)
@@ -46,7 +49,9 @@ public class SceneController : MonoBehaviour
             point.OnClicked = () => OnGlobalPointClickHandler(point);
             m_localBackgrounds.Add(point, m_localSprites[Random.Range(0, m_localSprites.Length)]);
 
+            m_localquestDatas.Add(point,new Dictionary<LocalPoint, LocalPointQuestDataSO>());
             m_localPoints.Add(point, new LocalPoint[3]);
+
             List<LocalPoint> lps = new List<LocalPoint>();
             for (int i = 0; i < 3; i++)
             {
@@ -57,6 +62,7 @@ public class SceneController : MonoBehaviour
                 }
                 lps.Add(localPoint);
                 m_localPoints[point][i] = localPoint;
+                m_localquestDatas[point].Add(localPoint, m_questdatas[Random.Range(0, m_questdatas.Length)]);
             }
         }
 
@@ -69,6 +75,7 @@ public class SceneController : MonoBehaviour
         m_ship.OnOxygenOut += GameOver;
         m_ship.OnHealthOut += GameOver;
         m_pointPanel.OnFlyClicked += Fly;
+        m_planetPanel.OnOkClick += StartQuest;
     }
 
     private void OnDestroy()
@@ -79,6 +86,7 @@ public class SceneController : MonoBehaviour
         m_ship.OnOxygenOut -= GameOver;
         m_ship.OnHealthOut -= GameOver;
         m_pointPanel.OnFlyClicked -= Fly;
+        m_planetPanel.OnOkClick -= StartQuest;
     }
 
     private void GameOver()
@@ -94,7 +102,13 @@ public class SceneController : MonoBehaviour
 
     private void OnLocalPointClickHandler(LocalPoint point)
     {
+        m_planetPanel.Show(m_localquestDatas[m_ship.CurrentPoint][point], point);
+    }
 
+    private void StartQuest(LocalPoint point)
+    {
+        m_ship.SpendStates(point);
+        // todo
     }
 
     private void Fly(Point point)
