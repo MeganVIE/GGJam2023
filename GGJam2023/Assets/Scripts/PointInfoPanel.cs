@@ -19,9 +19,11 @@ public class PointInfoPanel : MonoBehaviour
 
     public event Action<Point> OnFlyClicked;
 
-    private void Hide()
+    public void Hide()
     {
         gameObject.SetActive(false);
+        m_point.UpdateSelectedStatus(false);
+        m_point = null;
     }
 
     private void OnEnable()
@@ -36,9 +38,7 @@ public class PointInfoPanel : MonoBehaviour
 
     private void OnClickHandler()
     {
-        m_point.UpdateSelectedStatus(false);
         OnFlyClicked?.Invoke(m_point);
-        m_point = null;
         Hide();
     }
 

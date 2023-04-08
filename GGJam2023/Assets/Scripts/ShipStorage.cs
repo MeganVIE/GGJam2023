@@ -65,7 +65,7 @@ public class ShipStorage : MonoBehaviour
     {
         if (m_resources == null)
             Init();
-        
+
         foreach (var data in resourceDatas)
         {
             if (data.Value == 0)
