@@ -23,4 +23,8 @@ MonoBehaviour:
     \u201CSR-2 Normandy\u201D. \u0427\u0442\u043E\u0431\u044B \u044D\u0442\u043E
     \u043C\u043E\u0433\u043B\u043E \u0437\u043D\u0430\u0447\u0438\u0442\u044C?"
   ShipStateDatas: []
-  ResourceDatas: []
+  ResourceDatas:
+  - Type: 0
+    Value: 5
+  - Type: 1
+    Value: 5
